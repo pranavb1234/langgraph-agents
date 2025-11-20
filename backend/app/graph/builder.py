@@ -2,14 +2,29 @@ from langgraph.graph import StateGraph, END
 from app.graph.state import ConversationState
 from app.graph.agents import coordinator_agent, flight_agent, hotel_agent, presenter_agent
 
+# def route_from_coordinator(state):
+#     if state.active_task == "flight":
+#         return "flight"
+#     if state.active_task == "hotel":
+#         return "hotel"
+#     if state.active_task == "flight_and_hotel":
+#         return ["flight", "hotel"]
+#     return "presenter"
+
 def route_from_coordinator(state):
-    if state.active_task == "flight":
-        return "flight"
+    print("EDGE ROUTER RECEIVED TASK:", state.active_task)
+
     if state.active_task == "hotel":
         return "hotel"
+
+    if state.active_task == "flight":
+        return "flight"
+
     if state.active_task == "flight_and_hotel":
         return ["flight", "hotel"]
+
     return "presenter"
+
 
 def build_graph():
     builder = StateGraph(ConversationState)

@@ -19,6 +19,7 @@ class Trip(BaseModel):
     depart_date: Optional[str] = None
     return_date: Optional[str] = None
     budget: Optional[float] = None
+    destination_id: Optional[str] = None
 
 class ConversationState(BaseModel):
     user_message: str = ""
